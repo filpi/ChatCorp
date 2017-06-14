@@ -20,14 +20,14 @@ export class AppComponent {
 
     this.af.auth.subscribe(auth => {
       if(auth) {
-        this.name = auth;
+        this.name = "Filipe";
       }
     });
   }
 
   login() {
     this.af.auth.login({
-      provider: AuthProviders.Facebook,
+      provider: AuthProviders.Password,
       method: AuthMethods.Popup
     })
   }
@@ -37,7 +37,7 @@ export class AppComponent {
   }
 
   chatSend(theirMessage: string) {
-    this.items.push({ message: theirMessage, name: this.name.facebook.displayName});
+    this.items.push({ message: theirMessage, name: this.name});
     this.msgVal = '';
   }
 
