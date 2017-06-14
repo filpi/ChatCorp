@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Simple Chat App with AngularFire2 (Firebase + Angular 2)
 
 ![Angular Firebase](https://s3.amazonaws.com/coursetro/posts/31-full.png)
@@ -9,6 +8,3 @@ Read (and watch) the tutorial here: [Angular Firebase2 Tutorial](https://courset
 
 Clone this repo to get up and running!  Use it to create a more fully-featured chat app. And remember to check out more [Angular Tutorials](https://coursetro.com) at our site.
 =======
-# ChatCorpIADTEC
-An simple exemple of chat
->>>>>>> 9e73ad839d239aa897a9c201a5ac0d31f4e0fa8d
