@@ -9,7 +9,7 @@ import { AngularFire, AuthProviders, AuthMethods,FirebaseListObservable } from '
 export class AppComponent {
   items: FirebaseListObservable<any>;
   name: any;
-  msgVal: string = '';
+  msgVal = '';
 
   constructor(public af: AngularFire) {
     this.items = af.database.list('/messages', {
@@ -20,7 +20,7 @@ export class AppComponent {
 
     // this.af.auth.subscribe(auth => {
     //   if(auth) {
-        this.name = "IADTEC";
+        this.name = 'IADTEC';
     //   }
     // });
   }
@@ -29,7 +29,7 @@ export class AppComponent {
     this.af.auth.login({
       provider: AuthProviders.Password,
       method: AuthMethods.Popup
-    })
+    });
   }
 
   logout() {
@@ -37,7 +37,16 @@ export class AppComponent {
   }
 
   chatSend(theirMessage: string) {
-    this.items.push({ message: theirMessage, name: this.name});
+    let now = new Date();
+    // @TODO colocar isso numa classe externa?
+    let msg = {
+      message: theirMessage,
+      name: this.name,
+      date: now.toLocaleString(),
+      timestamp: now.getTime()
+    };
+
+    this.items.push(msg);
     this.msgVal = '';
   }
 

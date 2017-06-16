@@ -1,12 +1,29 @@
-<div class="row columns">
+<div class="chat-body">
   <button (click)="login()" *ngIf="!name">Login With Facebook</button>
-  <div id="container-scroll" style="width: 100%; max-height: 75vh; overflow-x: hidden; overflow-y: auto;">
-    <div class="chat-container" *ngFor="let item of items | async">
-      <a href="#">{{item.name}}</a>
-      <p>{{item.message}}</p>
+
+  <div class="chat-nav">
+    <ul>
+      <li>A</li>
+      <li>B</li>
+      <li>C</li>
+    </ul>
+  </div>
+
+
+  <div class="chat-content">
+    <div class="chat-box">
+      <div class="container-scroll">
+        <div class="chat-container" *ngFor="let item of items | async">
+          <p>{{item.message}}</p>
+          <a href="#">{{item.name}} - {{item.timestamp | date: 'dd/MM/yy H:mm:ss'}}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-inputholder">
+      <input type="text" id="message" *ngIf="name" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal"
+      />
     </div>
   </div>
-  <input type="text" id="message" *ngIf="name" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal"
-  />
-</div>
 
+</div>

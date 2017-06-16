@@ -8,12 +8,13 @@ import { AngularFireModule } from 'angularfire2';
 
 // Must export the config
 export const firebaseConfig = {
-  apiKey: "AIzaSyCexnzvYcrQvlVQKf2lupAQmDHuk81Knx0",
-    authDomain: "chatbot-874a0.firebaseapp.com",
-    databaseURL: "https://chatbot-874a0.firebaseio.com",
-    projectId: "chatbot-874a0",
-    storageBucket: "chatbot-874a0.appspot.com",
-    messagingSenderId: "844993562813"
+  apiKey: 'AIzaSyDtCx_vC7FZEw4SACEHQI3BSdItNbYI_QA',
+  authDomain: 'testechat-5e947.firebaseapp.com',
+  databaseURL: 'https://testechat-5e947.firebaseio.com',
+  projectId: 'testechat-5e947',
+  storageBucket: 'testechat-5e947.appspot.com',
+  messagingSenderId: '688969599089'
+
 };
 
 
