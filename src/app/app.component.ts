@@ -20,7 +20,7 @@ export class AppComponent {
 
     // this.af.auth.subscribe(auth => {
     //   if(auth) {
-        this.name = "Zonetti";
+        this.name = "IADTEC";
     //   }
     // });
   }
