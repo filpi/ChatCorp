@@ -11,12 +11,19 @@ export class AppComponent {
   name: any;
   msgVal = '';
 
+  chats: Array<{
+    name: string,
+    isAllowed: boolean,
+    link: string
+  }>;
+
   constructor(public af: AngularFire) {
-    this.items = af.database.list('/messages', {
-      query: {
-        limitToLast: 20
-      }
-    });
+
+    this.chats = [
+        { name: 'Sala 01', isAllowed: true,  link: '/mensagens' },
+        { name: 'Sala 02', isAllowed: true,  link: '/mensagens2' }
+        
+    ];
 
     // this.af.auth.subscribe(auth => {
     //   if(auth) {
@@ -24,6 +31,15 @@ export class AppComponent {
     //   }
     // });
   }
+
+  abobora(sala: string): string {
+    this.items = this.af.database.list(sala, {
+      query: {
+        limitToLast: 20
+      }
+    });
+    return sala;
+  };
 
   login() {
     this.af.auth.login({
