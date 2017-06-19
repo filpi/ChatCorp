@@ -4,9 +4,9 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 
-import { AngularFire, FirebaseApp, FirebaseAuthState, FirebaseListObservable, FirebaseObjectObservable } from "angularfire2";
+import { AngularFire, FirebaseApp, FirebaseAuthState, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
-import { BaseService } from "./base.service";
+import { BaseService } from './base.service';
 import { User } from './../models/user.model';
 
 @Injectable()
@@ -38,7 +38,7 @@ export class UserService extends BaseService {
     this.af.auth
       .subscribe((authState: FirebaseAuthState) => {
         if (authState) {
-          console.log('Auth state alterado!');          
+          console.log('Auth state alterado!');
           this.currentUser = this.af.database.object(`/users/${authState.auth.uid}`);
           this.setUsers(authState.auth.uid);
         }

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { BaseService } from "app/services/base.service";
+import { BaseService } from 'app/services/base.service';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/map';
 
-import { AngularFireAuth, FirebaseAuthState } from "angularfire2";
+import { AngularFireAuth, FirebaseAuthState } from 'angularfire2';
 
 @Injectable()
 export class AuthService extends BaseService{
