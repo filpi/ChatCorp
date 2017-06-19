@@ -1,9 +1,16 @@
 <div class="chat-box">
+<<<<<<< HEAD
   <div class="container-scroll">
     <div class="message-container" *ngFor="let item of items | async">
       <span class="time">{{item.timestamp | date: 'H:mm'}}</span>
       <span class="username">{{item.name}}</span>
       <span class="msg-text">{{item.message}}</span>
+=======
+  <div #scrollContainer class="container-scroll">
+    <div class="chat-container" *ngFor="let item of items | async">
+      <p>{{item.message}}</p>
+      <a href="#">{{item.name}} - {{item.timestamp | date: 'dd/MM/yy H:mm:ss'}}</a>
+>>>>>>> 23531a7c7c918576d89f2ce50999a0a950c8d6ea
     </div>
   </div>
 </div>
