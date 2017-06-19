@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { User } from 'app/models/user.model';
 
 import { AngularFire, AuthProviders,
@@ -16,6 +16,7 @@ export class ChatroomComponent implements OnInit {
   private msgVal = '';
   private currentRoom = '/sala-01';
   @Input() user: User;
+  @ViewChild('scrollContainer') private scrollContainer: ElementRef;
 
   constructor(
     public af: AngularFire
@@ -37,7 +38,20 @@ export class ChatroomComponent implements OnInit {
         limitToLast: 20
       }
     });
+
+    this.items.subscribe(() => {
+      this.scrollBottom();
+    });
+
   };
+
+  scrollBottom() {
+    let selfPointer = this;
+    // @TODO descobrit quando o bind foi feito na view para chamar o codigo sem usar esse timeout.
+    setTimeout(function() {
+      selfPointer.scrollContainer.nativeElement.scrollTop = selfPointer.scrollContainer.nativeElement.scrollHeight;
+    }, 100);
+  }
 
   sendChatMessage(theirMessage: string) {
     let now = new Date();
@@ -52,9 +66,9 @@ export class ChatroomComponent implements OnInit {
       this.items.push(msg);
     }
 
-  }
+    this.msgVal = '';
 
-  
+  }
 
   ngOnInit() {
   }
