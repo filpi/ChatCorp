@@ -1,0 +1,15 @@
+<div *ngIf="name" class="chat-content">
+  <div class="chat-box">
+    <div class="container-scroll">
+      <div class="chat-container" *ngFor="let item of items | async">
+        <p>{{item.message}}</p>
+        <a href="#">{{item.name}} - {{item.timestamp | date: 'dd/MM/yy H:mm:ss'}}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-inputholder">
+    <input type="text" id="message" *ngIf="name" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal"
+    />
+  </div>
+</div>

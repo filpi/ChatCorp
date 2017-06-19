@@ -1,28 +1,8 @@
 <div class="chat-body">
-  <button (click)="login()" *ngIf="!name">Login With Facebook</button>
+  <button (click)="createUser(user)" *ngIf="!name">Criar Login</button>
 
-  <div class="chat-nav">
-    <ul>
-      <li *ngFor="let chat of chats">
-        <a (click)="abobora(chat.link)">{{ chat.name }}</a>
-      </li>
-    </ul>
-  </div>
+  <app-roomnav></app-roomnav>
 
-  <div class="chat-content">
-    <div class="chat-box">
-      <div class="container-scroll">
-        <div class="chat-container" *ngFor="let item of items | async">
-          <p>{{item.message}}</p>
-          <a href="#">{{item.name}} - {{item.timestamp | date: 'dd/MM/yy H:mm:ss'}}</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="chat-inputholder">
-      <input type="text" id="message" *ngIf="name" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal"
-      />
-    </div>
-  </div>
+  <app-chatroom></app-chatroom>
 
 </div>

@@ -1,0 +1,7 @@
+ <div *ngIf="name" class="chat-nav">
+    <ul>
+      <li *ngFor="let chat of chats">
+        <a (click)="changeChat(chat.link)">{{ chat.name }}</a>
+      </li>
+    </ul>
+  </div>
