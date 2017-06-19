@@ -61,8 +61,9 @@ export class AppComponent {
       date: now.toLocaleString(),
       timestamp: now.getTime()
     };
-
-    this.items.push(msg);
+    if(msg.message.length > 0)
+      this.items.push(msg);
+    
     this.msgVal = '';
   }
 
