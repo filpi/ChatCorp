@@ -17,6 +17,35 @@
   max-height: calc(100vh - 75px)
 }
 
+.message-container {
+  display: block;
+  font-size: 16px;
+
+}
+
+span.time {
+  color: rgba(0,0,0,0);
+  width: 65px;
+  padding-right: 5px;
+}
+.message-container:hover > .time {
+  color: #000;
+}
+
+span.username {
+  text-transform: uppercase;
+  color: darkred;
+}
+
+span.msg-text {
+  color: #000;
+}
+
+.message-container:nth-child(odd){ 
+  background-color: rgba(50,50,50, 0.2);
+}
+
+
 .chat-inputholder {
   margin-top: auto;
   padding-left: 20px;
@@ -33,25 +62,4 @@ input#message {
   font-size: 30px;
   font-weight: 300;
   margin-top: 20px;
-}
-
-.chat-container {
-  display: block;
-  width: 100%;
-}
-
-.chat-container a {
-  text-transform: uppercase;
-  font-weight: bold;
-  color: #300;
-  font-size: .8em;
-  letter-spacing: 2px;
-  justify-content: flex-end;
-}
-
-.chat-container p {
-  background: #789A9F;
-  padding: 0.6em;
-  color: #000;
-  margin: 10px 0 0 0;
 }

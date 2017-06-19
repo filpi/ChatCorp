@@ -32,11 +32,7 @@ export class ChatroomComponent implements OnInit {
   get room(): string { return this.currentRoom; }
 
   changeRoom(room: string) {
-    this.items = this.af.database.list(room, {
-      query: {
-        limitToLast: 20
-      }
-    });
+    this.items = this.af.database.list(room);
   };
 
   sendChatMessage(theirMessage: string) {
