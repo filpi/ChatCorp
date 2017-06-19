@@ -34,10 +34,6 @@ export class ChatroomComponent implements OnInit {
 
   changeRoom(room: string) {
     this.items = this.af.database.list(room);
-      query: {
-        limitToLast: 20
-      }
-    });
 
     this.items.subscribe(() => {
       this.scrollBottom();
