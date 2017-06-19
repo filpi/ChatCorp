@@ -6,16 +6,16 @@
 .chat-container a {
   text-transform: uppercase;
   font-weight: bold;
-  color: #816A98;
+  color: #300;
   font-size: .8em;
   letter-spacing: 2px;
   justify-content: flex-end;
 }
 
 .chat-container p {
-  background: #816A98;
+  background: #789A9F;
   padding: 1.1em;
-  color: white;
+  color: #000;
   margin: 10px 0 0 0;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .chat-nav {
-  background: #fcf;
+  background: #F35344;
   display: flex;
   flex-direction: column;
   flex-basis: auto;
@@ -49,7 +49,7 @@
 .container-scroll {
   overflow-x: hidden;
   overflow-y: auto;
-  max-height: calc(100vh - 55px)
+  max-height: calc(100vh - 75px)
 }
 
 .chat-inputholder {
@@ -64,7 +64,8 @@ input#message {
   border-bottom: 1px solid #4C4C4C;
   outline: none;
   box-shadow: none;
-  color: #4C4C4C;
+  color: #000;
   font-size: 30px;
   font-weight: 300;
+  margin-top: 20px;
 }
