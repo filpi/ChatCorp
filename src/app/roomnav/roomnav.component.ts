@@ -12,6 +12,7 @@ export class RoomnavComponent implements OnInit {
   @Output() onRequestRoomChange = new EventEmitter<Room>();
 
   chats: Room[];
+  selectedRoom: Room;
 
   constructor() {
     this.chats = [
@@ -23,6 +24,7 @@ export class RoomnavComponent implements OnInit {
 
   changeChat(room: Room): Room {
     this.onRequestRoomChange.emit(room);
+    this.selectedRoom = room;
     return room;
   };
 

@@ -5,13 +5,34 @@
   flex-basis: auto;
   width: 12%;
   height: 100vh;
+  color: #fff;
+
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+p {
+  text-align: center;
+  font-weight: bold;
+  line-height: 40px;
+  border-bottom: solid 1px #ff9489;
+  margin: 0;
 }
 
 ol,ul {
   list-style-type: none;
+  margin-top: 5px;
+  margin-left: 0;
+}
+li {
+  border-bottom: solid 1px #ff9489;
+}
+li:hover, li.selected {
+  background: rgba(50,50,50,0.15);
+  cursor: pointer;
 }
 
-:host a {
-  color: #fff;
+.room-title {
   font-weight: bold;
+  margin-left: 20px;
 }

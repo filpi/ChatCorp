@@ -1,5 +1,6 @@
+<p>Salas</p>
 <ul>
-  <li *ngFor="let chat of chats">
-    <a (click)="changeChat(chat)">{{ chat.title }}</a>
+  <li *ngFor="let chat of chats" [ngClass]="{'selected': (chat == this.selectedRoom) }" (click)="changeChat(chat)">
+    <span class="room-title">{{ chat.title }}</span>
   </li>
 </ul>
