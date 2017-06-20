@@ -15,7 +15,6 @@ export class AuthService extends BaseService{
     public http: Http
   ) {
     super();
-    console.log('Hello Auth Provider');
   }
 
   createAuthUser(user: {email: string, password: string}): firebase.Promise<FirebaseAuthState> {

@@ -49,7 +49,13 @@ export class UserService extends BaseService {
   }
 
   setCurrentUser(user: User) {
-    this.currentUser = this.af.database.object(`/users/${user.$key}`);
+    this.currentUser = <FirebaseObjectObservable<User>>this.af.database.list(`/users`, {
+      query: {
+        orderByChild: 'username',
+        equalTo: user.username
+      }
+    }).first()
+    .catch(this.handleObservableError);
   }
 
   create(user: User, uuid: string): firebase.Promise<void> {

@@ -23,9 +23,13 @@
 
 }
 
+.message-container span {
+  display: inline-block;
+}
+
 span.time {
   color: rgba(0,0,0,0);
-  width: 65px;
+  min-width: 65px;
   padding-right: 5px;
 }
 .message-container:hover > .time {
@@ -33,7 +37,6 @@ span.time {
 }
 
 span.username {
-  text-transform: uppercase;
   color: darkred;
 }
 
@@ -42,7 +45,7 @@ span.msg-text {
 }
 
 .message-container:nth-child(odd){ 
-  background-color: rgba(50,50,50, 0.2);
+  background-color: rgba(50,50,50, 0.15);
 }
 
 

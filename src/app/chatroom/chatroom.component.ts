@@ -29,11 +29,13 @@ export class ChatroomComponent implements OnInit {
     public userService: UserService
   ) {
     this.changeRoom('/rooms/sala-01');
-    
+
     this.userService.currentUser
       .first()
       .subscribe((currentUser: User) => {
-        this.user = currentUser;
+        //por algum motivo, currentUser está retornando um array
+        //provavelmente algo a ver com o uso de list()?
+        this.user = currentUser[0];
       });
 
    }
@@ -47,12 +49,11 @@ export class ChatroomComponent implements OnInit {
   get room(): string { return this.currentRoom; }
 
   changeRoom(room: string) {
-    
     this.messages = <FirebaseListObservable<Message[]>>this.af.database.list(room);
     this.messages.subscribe((messageList) => {
       let self = this;
       setTimeout(function() {
-        /@TODO: RETIRAR ESSE TIMEOUT/
+        /@TODO: RETIRAR ESSE TIMEOUT/;
         self.scrollBottom();
       }, 100);
     });
@@ -67,7 +68,8 @@ export class ChatroomComponent implements OnInit {
 
     let now = new Date();
 
-    if(theirMessage) {
+    console.log(this.user);
+    if (theirMessage) {
       this.messageService.create(
         new Message(
           this.user.$key,
@@ -78,7 +80,7 @@ export class ChatroomComponent implements OnInit {
         ),
         this.messages
         ).then(() => {
-          /@TODO: AINDA NECESSÁRIO DEPOIS DE ARRUMAR A COMUNICACAO POR QUERYS? /
+          /*@TODO: AINDA NECESSÁRIO DEPOIS DE ARRUMAR A COMUNICACAO POR QUERYS? */;
           this.scrollBottom();
         });
     }

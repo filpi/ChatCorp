@@ -59,7 +59,7 @@ export class AppComponent {
               console.log(error);
             });
         } else {
-          this.userService.setCurrentUser(this.user);
+          this.userService.setCurrentUser(user);
           this.name = user.username;
         }
 

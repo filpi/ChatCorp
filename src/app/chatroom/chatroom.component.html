@@ -10,7 +10,7 @@
   </div>
 
   <div class="chat-inputholder">
-    <input type="text" id="message" *ngIf="user" placeholder="Chat here..." 
+    <input type="text" id="message" placeholder="Chat here..." 
       (keyup.enter)="sendChatMessage($event.target.value)" [(ngModel)]="msgVal" />
   </div>
 </div>
