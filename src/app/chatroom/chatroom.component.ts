@@ -29,7 +29,7 @@ export class ChatroomComponent implements OnInit {
     public userService: UserService
   ) {
     this.changeRoom('/rooms/sala-01');
-
+    
     this.userService.currentUser
       .first()
       .subscribe((currentUser: User) => {
@@ -47,19 +47,20 @@ export class ChatroomComponent implements OnInit {
   get room(): string { return this.currentRoom; }
 
   changeRoom(room: string) {
+    
     this.messages = <FirebaseListObservable<Message[]>>this.af.database.list(room);
-
-    this.messages.subscribe(() => {
-      this.scrollBottom();
+    this.messages.subscribe((messageList) => {
+      let self = this;
+      setTimeout(function() {
+        /@TODO: RETIRAR ESSE TIMEOUT/
+        self.scrollBottom();
+      }, 100);
     });
+
   };
 
   scrollBottom() {
-    let selfPointer = this;
-    // @TODO descobrit quando o bind foi feito na view para chamar o codigo sem usar esse timeout.
-    setTimeout(() => {
-      selfPointer.scrollContainer.nativeElement.scrollTop = selfPointer.scrollContainer.nativeElement.scrollHeight;
-    }, 100);
+    this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
   }
 
   sendChatMessage(theirMessage: string) {
@@ -77,6 +78,7 @@ export class ChatroomComponent implements OnInit {
         ),
         this.messages
         ).then(() => {
+          /@TODO: AINDA NECESSÁRIO DEPOIS DE ARRUMAR A COMUNICACAO POR QUERYS? /
           this.scrollBottom();
         });
     }
