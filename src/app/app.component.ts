@@ -59,7 +59,7 @@ export class AppComponent {
               console.log(error);
             });
         } else {
-          console.log(`O username ${user.username} já está sendo usado em outra conta!`);
+          this.userService.setCurrentUser(this.user);
           this.name = user.username;
         }
 

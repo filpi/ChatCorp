@@ -48,6 +48,10 @@ export class UserService extends BaseService {
       });
   }
 
+  setCurrentUser(user: User) {
+    this.currentUser = this.af.database.object(`/users/${user.$key}`);
+  }
+
   create(user: User, uuid: string): firebase.Promise<void> {
     return this.af.database.object(`/users/${uuid}`)
       .set(user)
