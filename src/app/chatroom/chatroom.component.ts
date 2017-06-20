@@ -17,11 +17,11 @@ import { Room } from 'app/models/room.model';
 })
 export class ChatroomComponent implements OnInit {
 
-  private messages: FirebaseListObservable<Message[]>;
-  private msgVal = '';
-  private _currentRoom: Room;
+  messages: FirebaseListObservable<Message[]>;
+  msgVal = '';
+  _currentRoom: Room;
   @Input() user: User;
-  @ViewChild('scrollContainer') private scrollContainer: ElementRef;
+  @ViewChild('scrollContainer') scrollContainer: ElementRef;
 
   constructor(
     public af: AngularFire,
