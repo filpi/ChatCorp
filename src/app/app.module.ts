@@ -1,15 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
+import { AppComponent } from './app.component';
+import { AuthComponent } from './auth/auth.component';
 import { AuthService } from 'app/services/auth.service';
 import { BaseService } from 'app/services/base.service';
-import { UserService } from 'app/services/user.service';
-import { AuthComponent } from './auth/auth.component';
 import { ChatroomComponent } from './chatroom/chatroom.component';
+import { MessageService } from 'app/services/message.service';
+import { UserService } from 'app/services/user.service';
 import { RoomnavComponent } from './roomnav/roomnav.component';
 
 // Must export the config
@@ -20,11 +21,7 @@ export const firebaseConfig = {
   projectId: 'teste-614a3',
   storageBucket: 'teste-614a3.appspot.com',
   messagingSenderId: '611762599079'
-
-
 };
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +37,8 @@ export const firebaseConfig = {
   ],
   providers: [
     AuthService,
-    UserService
+    UserService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

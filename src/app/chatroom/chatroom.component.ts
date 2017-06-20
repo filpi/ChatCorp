@@ -1,27 +1,41 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { User } from 'app/models/user.model';
+import { AngularFire,
+         AuthProviders,
+         AuthMethods,
+         FirebaseListObservable,
+         FirebaseAuthState } from 'angularfire2';
 
-import { AngularFire, AuthProviders,
-  AuthMethods, FirebaseListObservable,
-  FirebaseAuthState } from 'angularfire2';
+import { Message } from 'app/models/message.model';
+import { MessageService } from 'app/services/message.service';
+import { User } from 'app/models/user.model';
+import { UserService } from 'app/services/user.service';
+import { Room } from 'app/models/room.model';
 @Component({
   selector: 'app-chatroom',
   templateUrl: './chatroom.component.html',
   styleUrls: ['./chatroom.component.css']
 })
-
 export class ChatroomComponent implements OnInit {
 
-  private items: FirebaseListObservable<any>;
+  private messages: FirebaseListObservable<Message[]>;
   private msgVal = '';
-  private currentRoom = '/sala-01';
+  private currentRoom = '/rooms/sala-01';
   @Input() user: User;
   @ViewChild('scrollContainer') private scrollContainer: ElementRef;
 
   constructor(
-    public af: AngularFire
+    public af: AngularFire,
+    public messageService: MessageService,
+    public userService: UserService
   ) {
-    this.changeRoom('/sala-01');
+    this.changeRoom('/rooms/sala-01');
+
+    this.userService.currentUser
+      .first()
+      .subscribe((currentUser: User) => {
+        this.user = currentUser;
+      });
+
    }
 
   @Input()
@@ -33,40 +47,44 @@ export class ChatroomComponent implements OnInit {
   get room(): string { return this.currentRoom; }
 
   changeRoom(room: string) {
-    this.items = this.af.database.list(room);
+    this.messages = <FirebaseListObservable<Message[]>>this.af.database.list(room);
 
-    this.items.subscribe(() => {
+    this.messages.subscribe(() => {
       this.scrollBottom();
     });
-
   };
 
   scrollBottom() {
     let selfPointer = this;
     // @TODO descobrit quando o bind foi feito na view para chamar o codigo sem usar esse timeout.
-    setTimeout(function() {
+    setTimeout(() => {
       selfPointer.scrollContainer.nativeElement.scrollTop = selfPointer.scrollContainer.nativeElement.scrollHeight;
     }, 100);
   }
 
   sendChatMessage(theirMessage: string) {
+
     let now = new Date();
-    // @TODO colocar isso numa classe externa?
-    let msg = {
-      message: theirMessage,
-      name: this.user.name,
-      date: now.toLocaleString(),
-      timestamp: now.getTime()
-    };
-    if(msg.message.length > 0) {
-      this.items.push(msg);
+
+    if(theirMessage) {
+      this.messageService.create(
+        new Message(
+          this.user.$key,
+          this.user.name,
+          theirMessage,
+          now.toLocaleString(),
+          now.getTime()
+        ),
+        this.messages
+        ).then(() => {
+          this.scrollBottom();
+        });
     }
 
     this.msgVal = '';
 
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

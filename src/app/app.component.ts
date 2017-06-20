@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
-import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable, FirebaseAuthState } from 'angularfire2';
+import { AngularFire,
+         AuthProviders,
+         AuthMethods,
+         FirebaseListObservable,
+         FirebaseAuthState } from 'angularfire2';
 
 import { AuthService } from 'app/services/auth.service';
-import { UserService } from 'app/services/user.service';
-import { User } from 'app/models/user.model';
-
 import { ChatroomComponent } from 'app/chatroom/chatroom.component';
+import { User } from 'app/models/user.model';
+import { UserService } from 'app/services/user.service';
+
 
 @Component({
   selector: 'app-root',
@@ -16,7 +20,7 @@ export class AppComponent {
   name: any;
   msgVal = '';
   user = new User('Sergio', 'sergiocoletto2', 'sergio2@email.com', '123456');
-  currentRoom = '/sala-01';
+  currentRoom = '/rooms/sala-01';
 
 
   constructor(
@@ -24,8 +28,6 @@ export class AppComponent {
     public authService: AuthService,
     public userService: UserService
   ) {
-
-
     this.login(this.user);
   }
 

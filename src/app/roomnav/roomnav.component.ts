@@ -18,12 +18,11 @@ export class RoomnavComponent implements OnInit {
 
   constructor() {
     this.chats = [
-      { name: 'Sala 01', isAllowed: true, link: '/sala-01' },
-      { name: 'Sala 02', isAllowed: true, link: '/sala-02' },
-      { name: 'Sala 03', isAllowed: true, link: '/sala-03' }
+      { name: 'Sala 01', isAllowed: true, link: '/rooms/sala-01' },
+      { name: 'Sala 02', isAllowed: true, link: '/rooms/sala-02' },
+      { name: 'Sala 03', isAllowed: true, link: '/rooms/sala-03' }
     ];
   }
-
 
   changeChat(room: string): string {
     this.onRequestRoomChange.emit(room);

@@ -1,10 +1,13 @@
 import { Inject, Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { AngularFire,
+         FirebaseApp,
+         FirebaseAuthState,
+         FirebaseListObservable,
+         FirebaseObjectObservable } from 'angularfire2';
 
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
-
-import { AngularFire, FirebaseApp, FirebaseAuthState, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
 import { BaseService } from './base.service';
 import { User } from './../models/user.model';
