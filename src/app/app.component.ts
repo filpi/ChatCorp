@@ -9,6 +9,7 @@ import { AuthService } from 'app/services/auth.service';
 import { ChatroomComponent } from 'app/chatroom/chatroom.component';
 import { User } from 'app/models/user.model';
 import { UserService } from 'app/services/user.service';
+import { Room } from "app/models/room.model";
 
 
 @Component({
@@ -20,7 +21,7 @@ export class AppComponent {
   name: any;
   msgVal = '';
   user = new User('Sergio', 'sergiocoletto2', 'sergio2@email.com', '123456');
-  currentRoom = '/rooms/sala-01';
+  currentRoom: Room;
 
 
   constructor(
@@ -32,7 +33,6 @@ export class AppComponent {
   }
 
   login(user: User) {
-
     this.userService.userExists(user.username)
       .first()
       .subscribe((userExists: boolean) => {
@@ -75,5 +75,9 @@ export class AppComponent {
     .catch(error => {
       console.log('Erro ao criar usuário: ' + error);
     });
+  }
+
+  onRequestRoomChange(room: Room) {
+    this.currentRoom = room;
   }
 }

@@ -19,7 +19,7 @@ export class ChatroomComponent implements OnInit {
 
   private messages: FirebaseListObservable<Message[]>;
   private msgVal = '';
-  private currentRoom = '/rooms/sala-01';
+  private _currentRoom: Room;
   @Input() user: User;
   @ViewChild('scrollContainer') private scrollContainer: ElementRef;
 
@@ -28,8 +28,6 @@ export class ChatroomComponent implements OnInit {
     public messageService: MessageService,
     public userService: UserService
   ) {
-    this.changeRoom('/rooms/sala-01');
-
     this.userService.currentUser
       .first()
       .subscribe((currentUser: User) => {
@@ -41,15 +39,15 @@ export class ChatroomComponent implements OnInit {
    }
 
   @Input()
-  set room(room: string) {
+  set room(room: Room) {
     this.changeRoom(room);
-    this.currentRoom = room;
+    this._currentRoom = room;
   }
 
-  get room(): string { return this.currentRoom; }
+  get room(): Room { return this._currentRoom; }
 
-  changeRoom(room: string) {
-    this.messages = <FirebaseListObservable<Message[]>>this.af.database.list(room);
+  changeRoom(room: Room) {
+    this.messages = <FirebaseListObservable<Message[]>>this.af.database.list(room.link);
     this.messages.subscribe((messageList) => {
       let self = this;
       setTimeout(function() {

@@ -2,7 +2,7 @@
   
   <button (click)="createUser(user)" *ngIf="!name">Criar Login</button>
 
-  <app-roomnav [user]="user" *ngIf="name" (onRequestRoomChange)="this.currentRoom = $event"></app-roomnav>
+  <app-roomnav [user]="user" *ngIf="name" (onRequestRoomChange)="onRequestRoomChange($event)"></app-roomnav>
 
   <app-chatroom [user]="user" *ngIf="name" [room]="currentRoom"></app-chatroom>
 

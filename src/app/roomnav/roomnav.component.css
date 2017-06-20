@@ -5,6 +5,7 @@
   flex-basis: auto;
   width: 15%;
   height: 100vh;
+  border-top-right-radius: 5px;
 }
 
 :host a {
