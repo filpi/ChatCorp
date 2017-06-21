@@ -1,3 +1,25 @@
-<p>
-  auth works!
-</p>
+<div *ngIf="error" class="alert alert-warning" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span> {{error}}
+</div>
+
+<div class="modal-dialog">
+  <div class="loginmodal-container">
+    <!--<img [src]="'images/logo-iadtec.png">-->
+    <h1>Bem vindo ao IADChartCorp</h1><br>
+
+    <form class="form-signin" (submit)="loginWithEmail($event, email.value, password.value)">
+      <label for="email" class="sr-only">Email</label>
+      <input #email type="email" id="email" class="form-control" placeholder="exemplo@email.com">
+      <label for="password" class="sr-only">Senha</label>
+      <input #password type="password" id="password" class="form-control" placeholder="Senha" required="">
+      <br>
+      <button class="btn btn-md btn-primary btn-block" type="submit">Entrar</button>
+    </form>
+    <hr>
+    <div>
+      <span>Primeiro Acesso?</span>
+      <a [routerLink]="['/register']" style="cursor: pointer; color: blue; text-align: center">Click aqui!</a>
+    </div>
+  </div>
+</div>

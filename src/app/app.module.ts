@@ -12,32 +12,45 @@ import { ChatroomComponent } from './chatroom/chatroom.component';
 import { MessageService } from 'app/services/message.service';
 import { UserService } from 'app/services/user.service';
 import { RoomnavComponent } from './roomnav/roomnav.component';
+import { RouterModule, Routes } from "@angular/router";
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 // Must export the config
 export const firebaseConfig = {
-  apiKey: 'AIzaSyDxvqecmeHuCaL4ArdCqQO0k_BXw0L3-YQ',
-  authDomain: 'teste-614a3.firebaseapp.com',
-  databaseURL: 'https://teste-614a3.firebaseio.com',
-  projectId: 'teste-614a3',
-  storageBucket: 'teste-614a3.appspot.com',
-  messagingSenderId: '611762599079'
+  apiKey: "AIzaSyCexnzvYcrQvlVQKf2lupAQmDHuk81Knx0",
+    authDomain: "chatbot-874a0.firebaseapp.com",
+    databaseURL: "https://chatbot-874a0.firebaseio.com",
+    projectId: "chatbot-874a0",
+    storageBucket: "chatbot-874a0.appspot.com",
+    messagingSenderId: "844993562813"
 };
+
+const routes: Routes = [
+  {path: '', component: ChatroomComponent },
+  {path: 'auth', component: AuthComponent },
+  {path: 'register', component: RegistrationPageComponent }
+]
+
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     ChatroomComponent,
-    RoomnavComponent
+    RoomnavComponent,
+    RegistrationPageComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    RouterModule.forRoot(routes)
   ],
   providers: [
     AuthService,
-    UserService,
+    // UserService,
     MessageService
   ],
   bootstrap: [AppComponent]

@@ -7,15 +7,26 @@
   <div class="chat-box">
     <div #scrollContainer class="container-scroll">
       <div class="message-container" *ngFor="let message of messages | async">
-        <span class="time">{{message.timestamp | date: 'H:mm'}}</span>
+
+        <div class="bubble" [class.you]="isYou(message.email)" [class.me]="isMe(message.email)">
+          <p>{{ message.message }}</p>
+          <div class="author">
+            {{ message.displayName }} | {{ message.timestamp | date:"MM/dd/yy hh:mm a" }}
+          </div>
+        </div>
+        <!--<span class="time">{{message.timestamp | date: 'H:mm'}}</span>
         <span class="username">{{message.name}}</span>
-        <span class="msg-text">{{message.text}}</span>
+        <span class="msg-text">{{message.text}}</span>-->
+
       </div>
     </div>
   </div>
 
-  <div class="chat-inputholder">
+  <input type="textarea" class="message-text" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()">
+
+
+  <!--<div class="chat-inputholder">
     <input type="text" id="message" placeholder="Chat here..." (keyup.enter)="sendChatMessage($event.target.value)" [(ngModel)]="msgVal"
     />
-  </div>
+  </div>-->
 </div>

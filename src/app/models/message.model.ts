@@ -1,11 +1,13 @@
 export class Message {
 
   constructor(
-    public userId: string,
-    public name: string,
+    // public userId: string,
+    public displyName: string,
     public text: string,
-    public date: string,
-    public timestamp: any
+    public email: string,
+    // public date: string,
+    // public timestamp: any
+    public timestamp: number
   ) {}
 
 }
