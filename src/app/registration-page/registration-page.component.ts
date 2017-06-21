@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { AuthService } from "./../services/auth.service";
+=======
+import { AF } from "./../providers/af";
+>>>>>>> faba10bd7805c773ba39fe593e9e41d9c378b809
 import { Router } from "@angular/router";
 
 
@@ -11,7 +15,11 @@ import { Router } from "@angular/router";
 export class RegistrationPageComponent {
   public error: any;
 
+<<<<<<< HEAD
   constructor(private afService: AuthService, private router: Router) {
+=======
+  constructor(private afService: AF, private router: Router) {
+>>>>>>> faba10bd7805c773ba39fe593e9e41d9c378b809
 
   }
 

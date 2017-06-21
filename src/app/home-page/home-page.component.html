@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--<div class="chat-body">
   
   <app-roomnav  *ngIf="name" (onRequestRoomChange)="onRequestRoomChange($event)"></app-roomnav>
@@ -5,3 +6,31 @@
   <app-chatroom *ngIf="name" [room]="currentRoom"></app-chatroom>
 
 </div>-->
+=======
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <!-- Point: 1 -->
+      <div #scrollMe class="bs-example" id="messages">
+        <div *ngFor="let message of messages | async">
+
+          <!-- Point: 2 -->
+          <div class="bubble" [class.you]="isYou(message.email)" [class.me]="isMe(message.email)">
+            <p>{{ message.message }}</p>
+            <div class="author">
+              {{ message.displayName }} | {{ message.timestamp | date:"MM/dd/yy hh:mm a" }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <figure class="highlight">
+
+        <!-- Point: 3 -->
+        <input type="textarea" class="message-text" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()">
+        <a class="send-message" (click)="sendMessage()">SEND</a>
+
+      </figure>
+    </div>
+  </div>
+</div>
+>>>>>>> faba10bd7805c773ba39fe593e9e41d9c378b809
